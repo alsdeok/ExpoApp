@@ -12,7 +12,27 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.arrow {
+  margin-top: 50px;
+  position: relative;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 80px 50px 0 50px; /* Cambiamos los valores para apuntar hacia arriba */
+  border-color: #007bff transparent transparent transparent; /* Cambiamos el color */
+}
 
+.arrow::before {
+  content: '';
+  position: absolute;
+  bottom: 80px; /* Ajustamos la posición del pseudo-elemento */
+  left: -40px; /* Ajustamos la posición del pseudo-elemento */
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 40px 40px 0 40px; /* Cambiamos los valores para el pseudo-elemento */
+  border-color: #fff transparent transparent transparent; /* Cambiamos el color */
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -22,6 +42,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding-bottom: 5%;
+  border-bottom: #39464a 2px dotted;
 }
 
 .App-link {
