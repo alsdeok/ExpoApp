@@ -190,7 +190,7 @@ function App() {
           </div>
         </div>
         <svg
-          className="mt-10 w-20 h-20 text-white-800 dark:text-white"
+          className="mt-10 w-20 h-20 text-white-800 dark:text-white hover:cursor-pointer"
           aria-hidden="true"
           onClick={() => {
             window.scrollTo(0, altura * 3);
@@ -224,10 +224,10 @@ function App() {
                 </div>
                 {estadoDiv ? null : (
                   <button
-                    className="text-lg font-semibold bg-white/30 hover:bg-white rounded-lg px-2 py-1"
+                    className="inline-block text-white rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-md font-semibold uppercase leading-normal hover:bg-gray-100 text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
                     onClick={() => setEstadoDiv(true)}
                   >
-                    Detalle
+                    Ver Detalle
                   </button>
                 )}
                 {estadoDiv ? (
@@ -250,7 +250,7 @@ function App() {
                         ))}
                       </Typography>
                       <button
-                        className="text-lg font-semibold  bg-white/50 hover:bg-white rounded-lg px-3 py-1"
+                        className="inline-block text-white rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-md font-semibold uppercase leading-normal hover:bg-gray-100 text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
                         onClick={() => setEstadoDiv(false)}
                       >
                         Cerrar
