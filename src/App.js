@@ -33,9 +33,9 @@ function App() {
     },
     {
       descripcion: [
-        "Un formulario con acceso mediante el footer.",
-        "Dentro de la app se visualiza un listado de los mensajes con su estado, con la posibilidad de eliminar, ampliar o responder.",
-        "Si es respondido, se envia un email con la respuesta.",
+        "Un formulario con acceso a travez del footer.",
+        "Dentro de la app se visualiza un listado de los mensajes con su estado, y la posibilidad de eliminar, ampliar o responder.",
+        "En caso de ser respondido, se envia un email con la respuesta.",
       ],
       titulo: "Apartado de Contacto",
       video: videoContacto,
@@ -50,23 +50,38 @@ function App() {
       video: videoMultimedia,
     },
     {
-      descripcion: ["Apartado de Eventos "],
-      titulo: "Apartado Eventos",
+      descripcion: [
+        "Calendario con capacidad de visualizar,crear y editar eventos en base al nivel de acceso.",
+        "Incluye la opcion de agregar un evento y que se repita todos los dias asignados del mes.",
+        "Presenta tambien su modo responsive con un diseño intuitivo.",
+      ],
+      titulo: "Calendario",
       video: videoEventos,
     },
     {
-      descripcion: ["Apartado de Reuniones "],
+      descripcion: [
+        "Un apartado utilizado para crear la organizacion de las reuniones presenciales de la empresa.",
+        "Con un componente capaz de arrastrar elementos ( para ordenar de manera necesaria ) y cambios en vivo reflejados en un resumen.",
+        "Cuenta tambien con un historial de las reuniones previas y su modo responsive.",
+      ],
       titulo: "Apartado Reuniones",
       video: VideoReuniones,
     },
     {
-      descripcion: ["Apartado de Formulario "],
-      titulo: "Apartado Formulario",
+      descripcion: [
+        "Componente mediante el cual se ingresan datos de los integrantes de la empresa.",
+        "Los datos requeridos se amoldan a la necesidad de la misma.",
+        "Tambien cuenta con su modo responsive.",
+      ],
+      titulo: "Formulario",
       video: videoFormulario,
     },
     {
-      descripcion: ["Apartado de Listado "],
-      titulo: "Apartado Listado",
+      descripcion: [
+        "Lista de todos los datos ingresados mediante el formulario.",
+        "Cuenta con un paginado, posibilidad de busqueda y distintos filtros que la empresa necesita.",
+      ],
+      titulo: "Listado de integrantes",
       video: videoListado,
     },
   ];
@@ -75,7 +90,7 @@ function App() {
     <div>
       <div className="text-center min-h-screen flex flex-col items-center justify-center text-white text-2xl p-5 border-b-2 border-dotted border-black bg-[#282c34]">
         <h1 className="mb-10 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">
-          Mi Aplicacion Web
+          Mi Aplicacion de Organizacion
         </h1>
         <h3 className="mb-6 text-lg font-normal text-gray-400 lg:text-xl sm:px-16 xl:px-48">
           Esta app es usada actualmente para una empresa que necesita mantener
@@ -118,7 +133,7 @@ function App() {
                 FrontEnd:
               </p>{" "}
               Una aplicacion construida con ReactJS, y con el uso de
-              React-Router, Redux y tailwindcss.
+              React-Router, Redux, Fetching de datos y tailwindcss.
             </li>
             <li className="text-justify">
               <p className="text-decoration-line: underline inline">BakcEnd:</p>{" "}
@@ -131,10 +146,10 @@ function App() {
           </ul>
           <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
           <div className="flex flex-col md:flex-row justify-around mt-4 border-r border-l border-white">
-            <div className="md:border-r p-2 md:pr-10">
+            <div className="md:w-2/4 md:border-r p-2 md:pr-10">
               <p className="text-decoration-line: underline inline">
                 {" "}
-                Otras tecnologias y frameworks utilizados son:{" "}
+                Otras tecnologias y frameworks utilizados:{" "}
               </p>
               <ul className="mt-2">
                 <li>Express-session</li>
@@ -147,7 +162,7 @@ function App() {
               </ul>
             </div>
             <hr className="md:hidden h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-            <div>
+            <div className="md:w-2/4">
               <p className="text-decoration-line: underline inline">
                 {" "}
                 Principales utilidades:
@@ -158,6 +173,7 @@ function App() {
                 <li>Calendario de eventos</li>
                 <li>Uso de sesiones</li>
                 <li>Administracion de permisos</li>
+                <li>Roles/Niveles de accesos</li>
                 <li>Autorizacion mediante Google</li>
               </ul>
             </div>
@@ -180,9 +196,9 @@ function App() {
         </svg>
       </div>
       <Carousel className="bg-[#282c34]">
-        {videos.map((video) => {
+        {videos.map((video, index) => {
           return (
-            <div key={video.id}>
+            <div key={index}>
               <div className="relative h-screen w-full flex items-center place-content-center">
                 <div className="flex justify-center w-full">
                   <video
