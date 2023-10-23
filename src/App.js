@@ -8,10 +8,17 @@ import videoListado from "./videos/VideoListado.mp4";
 import videoPerfil from "./videos/VídeoPerfil.mp4";
 import videoMultimedia from "./videos/VideoMultimedia.mp4";
 import { Carousel, Typography } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [estadoDiv, setEstadoDiv] = useState(true);
+  const [altura, setAltura] = useState(window.innerHeight);
+
+  useEffect(() => {
+    setAltura(window.innerHeight);
+    // eslint-disable-next-line
+  }, []);
+
   const videos = [
     {
       descripcion: [
@@ -33,8 +40,8 @@ function App() {
     },
     {
       descripcion: [
-        "Un formulario con acceso a travez del footer.",
-        "Dentro de la app se visualiza un listado de los mensajes con su estado, y la posibilidad de eliminar, ampliar o responder.",
+        "Un formulario con acceso a traves del footer.",
+        "Dentro de la app se visualiza un listado de los mensajes con su estado y la posibilidad de eliminar, ampliar o responder.",
         "En caso de ser respondido, se envia un email con la respuesta.",
       ],
       titulo: "Apartado de Contacto",
@@ -42,7 +49,7 @@ function App() {
     },
     {
       descripcion: [
-        "Apartado destinado a cargar y descargar archivos en formatos para PDF, Video, Power Point, y otros necesarios.",
+        "Apartado destinado a cargar y descargar archivos en formatos para pdf,video powerpoint,etc.",
         "Al contar la empresa con dos sedes, necesariamente los archivos son discriminados por el lugar establecido.",
         "Todo su contenido es responsive.",
       ],
@@ -51,7 +58,7 @@ function App() {
     },
     {
       descripcion: [
-        "Calendario con capacidad de visualizar,crear y editar eventos en base al nivel de acceso.",
+        "Calendario con capacidad de visualizar, crear y editar eventos en base al nivel de acceso.",
         "Incluye la opcion de agregar un evento y que se repita todos los dias asignados del mes.",
         "Presenta tambien su modo responsive con un diseño intuitivo.",
       ],
@@ -106,7 +113,10 @@ function App() {
         </p>
 
         <svg
-          className="mt-10 w-20 h-20 text-white-800 dark:text-white"
+          className="mt-10 w-20 h-20 text-white-800 dark:text-white hover:cursor-pointer"
+          onClick={() => {
+            window.scrollTo(0, altura);
+          }}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -135,13 +145,13 @@ function App() {
               Una aplicacion construida con ReactJS, y con el uso de
               React-Router, Redux, Fetching de datos y tailwindcss.
             </li>
-            <li className="text-justify">
-              <p className="text-decoration-line: underline inline">BakcEnd:</p>{" "}
+            <li className="text-justify mt-2">
+              <p className="text-decoration-line: underline inline">BackEnd:</p>{" "}
               Una aplicacion construida en un entorno de NodeJS, mediante el uso
               del framework Express, el cual define controladores y servicios
               que interactuan con una base de datos PostgresSQL mediante el ORM
               Sequelize. El servidor se encuentra alojado en distintas
-              instancias en amazon medieante el servicio de EC2.
+              instancias en amazon mediante el servicio de EC2.
             </li>
           </ul>
           <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
@@ -182,6 +192,9 @@ function App() {
         <svg
           className="mt-10 w-20 h-20 text-white-800 dark:text-white"
           aria-hidden="true"
+          onClick={() => {
+            window.scrollTo(0, altura * 3);
+          }}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 14 8"
@@ -199,7 +212,7 @@ function App() {
         {videos.map((video, index) => {
           return (
             <div key={index}>
-              <div className="relative h-screen w-full flex items-center place-content-center">
+              <div className="relative h-screen w-full flex flex-col gap-10 items-center place-content-center">
                 <div className="flex justify-center w-full">
                   <video
                     src={video.video}
@@ -211,7 +224,7 @@ function App() {
                 </div>
                 {estadoDiv ? null : (
                   <button
-                    className="absolute text-lg font-semibold top-20  md:right-10 md:top-10 bg-white/30 hover:bg-white rounded-lg px-2 py-1"
+                    className="text-lg font-semibold bg-white/30 hover:bg-white rounded-lg px-2 py-1"
                     onClick={() => setEstadoDiv(true)}
                   >
                     Detalle
@@ -219,13 +232,6 @@ function App() {
                 )}
                 {estadoDiv ? (
                   <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/90">
-                    <button
-                      className="absolute text-lg font-semibold top-20 md:right-10 md:top-10 bg-white/50 hover:bg-white rounded-lg px-3 py-1"
-                      onClick={() => setEstadoDiv(false)}
-                    >
-                      Cerrar
-                    </button>
-
                     <div className="w-3/4 text-center md:w-2/4">
                       <Typography
                         variant="h1"
@@ -243,6 +249,12 @@ function App() {
                           <p key={index}>{parrafo}</p>
                         ))}
                       </Typography>
+                      <button
+                        className="text-lg font-semibold  bg-white/50 hover:bg-white rounded-lg px-3 py-1"
+                        onClick={() => setEstadoDiv(false)}
+                      >
+                        Cerrar
+                      </button>
                     </div>
                   </div>
                 ) : null}
